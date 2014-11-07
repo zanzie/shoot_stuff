@@ -3,8 +3,8 @@
 
 Laser[] shoott = new Laser[3];
 PVector shipDim = new PVector(21, 99);
-int shipSpeed = 20;
-
+int shipSpeed = 6;
+int ship2Speed = 6;
 float ship1x;
 float ship2x;
 float ship1y;
@@ -18,7 +18,7 @@ boolean s1up, s2up, s1down, s2down;
 
 void setup() {
   size(753, 753); //Just because Zanzie wants so
-  background (1);
+  background (1,1,1,90);
 
   ship1x = 15;
   ship2x = width-15; 
@@ -30,18 +30,50 @@ void setup() {
 
 void draw() {
   shipMovement();
-  background(1);
-
+  //background (1,1,1,9);
+  fill(254,254,254,75);
+rect(1,1,height*2,width*2);
   //draw ships, rects for now, to be replaced with shooting ship
-  rect(21, ship1y, shipDim.x, shipDim.y );
-  rect(width-21, ship2y, shipDim.x, shipDim.y);
+     triangle(20, ship1y-15, 20,ship1y+15 , 40, ship1y);
+  //rect(21, ship1y, shipDim.x, shipDim.y );
+   triangle(width-20,ship2y -15, width-20,ship2y+15 , width -40, ship2y);
+  //rect(width-21, ship2y, shipDim.x, shipDim.y);
+    if (ship1y <= 0){
+  shipSpeed = 0;
+  ship1y = 1;
+  } else {
+    shipSpeed = 6;
+}
+
+if (ship2y <= 0){
+  ship2Speed = 0;
+  ship2y = 1;
+  } else {
+    ship2Speed = 6;
+}
+
+//upper boarder
+
+  if (ship1y >= height){
+  shipSpeed = 0;
+  ship1y = height-1;
+  } else {
+    shipSpeed = 6;
+}
+
+if (ship2y >= height){
+  ship2Speed = 0;
+  ship2y = height-1;
+  } else {
+    ship2Speed = 6;
+}
 }
 
 void shipMovement() {
   if (s1up) ship1y -= shipSpeed;
   if (s1down) ship1y += shipSpeed;
-  if (s2up) ship2y -= shipSpeed;
-  if (s2down) ship2y += shipSpeed;
+  if (s2up) ship2y -= ship2Speed;
+  if (s2down) ship2y += ship2Speed;
 }
 
 void keyPressed () {
