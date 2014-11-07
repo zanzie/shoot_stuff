@@ -30,8 +30,11 @@ void draw() {
   background(1);
 
   //draw ships, rects for now, to be replaced with shooting ship
-  rect(20, ship1y, shipDim.x, shipDim.y );
-  rect(width-20, ship2y, shipDim.x, shipDim.y);
+  
+   triangle(20, ship1y-15, 20,ship1y+15 , 40, ship1y);
+  //rect(20, ship1y, shipDim.x, shipDim.y );
+  triangle(width-20,ship2y -15, width-20,ship2y+15 , width -40, ship2y);
+  //rect(width-20, ship2y, shipDim.x, shipDim.y);
 }
 
 void shipMovement() {
