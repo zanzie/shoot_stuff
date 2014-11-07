@@ -1,7 +1,9 @@
 //Space Invaders. Mischa vs Zanzie 
+
+
+Laser[] shoott = new Laser[3];
 PVector shipDim = new PVector(21, 99);
-int shipSpeed = 6;
-int ship2Speed = 6;
+int shipSpeed = 20;
 
 float ship1x;
 float ship2x;
@@ -31,53 +33,15 @@ void draw() {
   background(1);
 
   //draw ships, rects for now, to be replaced with shooting ship
-  
-   triangle(20, ship1y-15, 20,ship1y+15 , 40, ship1y);
-  //rect(20, ship1y, shipDim.x, shipDim.y );
-  triangle(width-20,ship2y -15, width-20,ship2y+15 , width -40, ship2y);
-  //rect(width-20, ship2y, shipDim.x, shipDim.y);
- 
- 
- //upper boarder 
-  if (ship1y <= 0){
-  shipSpeed = 0;
-  ship1y = 1;
-  } else {
-    shipSpeed = 6;
+  rect(21, ship1y, shipDim.x, shipDim.y );
+  rect(width-21, ship2y, shipDim.x, shipDim.y);
 }
 
-if (ship2y <= 0){
-  ship2Speed = 0;
-  ship2y = 1;
-  } else {
-    ship2Speed = 6;
-}
-
-//upper boarder
-
-  if (ship1y >= height){
-  shipSpeed = 0;
-  ship1y = height-1;
-  } else {
-    shipSpeed = 6;
-}
-
-if (ship2y >= height){
-  ship2Speed = 0;
-  ship2y = height-1;
-  } else {
-    ship2Speed = 6;
-}
-
-
-
-}
 void shipMovement() {
   if (s1up) ship1y -= shipSpeed;
   if (s1down) ship1y += shipSpeed;
-  if (s2up) ship2y -= ship2Speed;
-  if (s2down) ship2y += ship2Speed;
- 
+  if (s2up) ship2y -= shipSpeed;
+  if (s2down) ship2y += shipSpeed;
 }
 
 void keyPressed () {
@@ -116,6 +80,4 @@ void keyReleased() {
     s2down = false;
   }
 }
-
-
 
