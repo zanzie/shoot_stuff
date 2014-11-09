@@ -7,28 +7,30 @@ float ship1y;
 float ship2y;
 int score;
 int ballSize = 20;
-boolean fire = false;
+boolean fire1 = false;
+boolean fire2 = false;
 
 boolean s1up, s2up, s1down, s2down;
 
 //Initialise gameOver variable
-int gameOver = 0;
+//int gameOver = 0;
 
 //int startGame;
-int getRandomX()
+//int getRandomX()
 
 
-// int score;
-{
-  return int(random(600));
-}
+ int score1;
+ int score2;
+//{
+//  return int(random(600));
+//}
 
-int[] ballx = { 
-  getRandomX(), getRandomX(), getRandomX(), getRandomX(), getRandomX()
-  };
-int[] bally = { 
-  0, 0, 0, 0, 0
-};
+//int[] ballx = { 
+//  getRandomX(), getRandomX(), getRandomX(), getRandomX(), getRandomX()
+//  };
+//int[] bally = { 
+//  0, 0, 0, 0, 0
+//};
 
 void setup()
 {
@@ -87,84 +89,145 @@ void draw()
 
 fill(255);
 stroke (0);
-triangle(mouseX-8, 480, mouseX+8, 480, mouseX, 565);
+//triangle(mouseX-8, 480, mouseX+8, 480, mouseX, 565);
 fill(0);
-text(score, 20, 20);
-if (fire)
+text(score1, 20, 20);
+text(score2, width - 20, 20);
+if (fire1)
 {
-  cannon(mouseX);
-  fire = false;
+  cannon1(ship1y);
+  fire1 = false;
 }
 
-ballFalling();
-gameFinish();
+if (fire2)
+{
+  cannon2(ship2y);
+  fire2 = false;
+}
+
+
+//ballFalling();
+//gameFinish();
 }
 
 //Play the game
 
 
-void mousePressed()
-{
-  fire = true;
-}
+//void mousePressed()
+//{
+//  fire = true;
+//}
 
-void ballFalling()
-{ 
-  stroke(39, 154, 240);
-  fill (39, 154, 240);
+//void ballFalling()
+//{ 
+//  stroke(39, 154, 240);
+//  fill (39, 154, 240);
+//
+//  for (int i=0; i<5; i++)
+//  {
+//    ellipse(ballx[i], bally[i]++, ballSize, ballSize);
+//  }
+//}
 
-  for (int i=0; i<5; i++)
-  {
-    ellipse(ballx[i], bally[i]++, ballSize, ballSize);
-  }
-}
-
-void cannon(int shotX)
+void cannon1(float shotX)
 {
   boolean strike = false;
   for (int i = 0; i < 5; i++)
   {
-    if ((shotX >= (ballx[i]-ballSize/2)) && (shotX <= (ballx[i]+ballSize/2))) {
+    if ((ship1y >= (ship2y -15)) && (ship1y <= (ship2y +15))) {
       strike = true;
-      line(mouseX, 565, mouseX, bally[i]);
-      ellipse(ballx[i], bally[i], 
-      ballSize+25, ballSize+25);
-      ballx[i] = getRandomX();
-      bally[i] = 0;
+      line(40,ship1y, width, ship1y);
+      line(40,ship1y, width, ship1y+random(-4,4));
+       line(40,ship1y, width, ship1y+random(-4,4));
+        line(40,ship1y, width, ship1y+random(-4,4));
+         line(40,ship1y, width, ship1y+random(-4,4));
+          line(40,ship1y, width, ship1y+random(-4,4));
+           line(40,ship1y, width, ship1y+random(-4,4));
+            line(40,ship1y, width, ship1y+random(-4,4));
+            line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));
+            line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));line(40,ship1y, width, ship1y+random(-5,5));
+            
+      //ellipse(ballx[i], bally[i], 
+      //ballSize+25, ballSize+25);
+      //ballx[i] = getRandomX();
+      //bally[i] = 0;
+
 
 
       // update score
-      score++;
+      score1++;
     }
   }
 
   if (strike == false)
   {
-    line(mouseX, 565, mouseX, 0);
+    line(40,ship1y, width, ship1y);
   }
 }
+
+
+void cannon2(float shotX)
+{
+  boolean strike = false;
+  for (int i = 0; i < 5; i++)
+  {
+    if ((ship2y >= (ship1y -15)) && (ship2y <= (ship1y +15))) {
+      strike = true;
+      line(15,ship2y, width-40, ship2y);
+      line(15,ship2y+random(-5,5), width-40, ship2y);
+      line(15,ship2y+random(-5,5), width-40, ship2y);
+      line(15,ship2y+random(-5,5), width-40, ship2y);
+      line(15,ship2y+random(-5,5), width-40, ship2y);
+      line(15,ship2y+random(-5,5), width-40, ship2y);
+      line(15,ship2y+random(-5,5), width-40, ship2y);line(15,ship2y+random(-5,5), width-40, ship2y);line(15,ship2y+random(-5,5), width-40, ship2y);
+      line(15,ship2y+random(-5,5), width-40, ship2y);
+      line(15,ship2y+random(-5,5), width-40, ship2y);line(15,ship2y+random(-5,5), width-40, ship2y);line(15,ship2y+random(-5,5), width-40, ship2y);
+      line(15,ship2y+random(-5,5), width-40, ship2y);
+      line(15,ship2y+random(-5,5), width-40, ship2y);line(15,ship2y+random(-5,5), width-40, ship2y);line(15,ship2y+random(-5,5), width-40, ship2y);
+      //ellipse(ballx[i], bally[i], 
+      //ballSize+25, ballSize+25);
+      //ballx[i] = getRandomX();
+      //bally[i] = 0;
+
+
+
+      // update score
+      score2++;
+    }
+  }
+
+  if (strike == false)
+  {
+    line(0,ship2y, width-40, ship2y);
+  }
+}
+
+
+
+
+
 
 
 //GameOver
 
-void gameFinish()
-{
-  for (int i=0; i< 5; i++)
-  {
-    if (bally[i]==530)
-    {
-
-
-      fill(color(255, 0, 0));
-      fill(255, 0, 0);
-      textAlign(CENTER);
-      text("GAME OVER", width/2, height/2);
-      text("Well done! Your score was : "+ score, width/2, height/2 + 50);
-
-      noLoop();
-    }
-  }
-}
+//void gameFinish()
+//{
+//  for (int i=0; i< 5; i++)
+//  {
+//    if (bally[i]==530)
+//    {
+//
+//
+//      fill(color(255, 0, 0));
+//      fill(255, 0, 0);
+//      textAlign(CENTER);
+//      text("GAME OVER", width/2, height/2);
+//      text("Well done! Your score was : "+ score, width/2, height/2 + 50);
+//
+//      noLoop();
+//    }
+//  }
+//}
 void shipMovement() {
   if (s1up) ship1y -= shipSpeed;
   if (s1down) ship1y += shipSpeed;
@@ -192,6 +255,18 @@ void keyPressed () {
     s2up = false;
     s2down = true;
   }
+   if (key =='x') {
+fire1 = true;
+  }
+  
+   if (key =='l') {
+  fire2 = true;
+  }
+  
+  
+  
+  
+  
 }
 
 void keyReleased() {
@@ -208,5 +283,3 @@ void keyReleased() {
     s2down = false;
   }
 }
-
-
